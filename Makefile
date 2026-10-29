@@ -1,9 +1,9 @@
 .PHONY: build test install clean
 build:
-	cargo build --release
+	python3 -m compileall -q src
 test:
-	cargo test --release
+	python3 -m unittest discover -s tests -v
 install:
-	install -Dm755 target/release/* $(DESTDIR)/usr/bin/ 2>/dev/null || true
+	install -Dm755 bin/* $(DESTDIR)/usr/bin/ 2>/dev/null || true
 clean:
-	cargo clean
+	rm -rf src/__pycache__ tests/__pycache__
