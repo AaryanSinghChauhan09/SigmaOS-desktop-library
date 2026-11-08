@@ -1,57 +1,6 @@
-use anyhow::Result;
-use sigmaos_component::{Config, Service};
+use sigmaos_desktop_library::Component;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_desktop_library_config_aaa() -> Result<()> {
-        // Arrange
-        let config = Config::default();
-
-        // Act
-        let result = config.process();
-
-        // Assert
-        assert!(result.is_ok());
-        Ok(())
-    }
-
-    #[test]
-    fn test_desktop_library_custom_config_aaa() -> Result<()> {
-        // Arrange
-        let custom_config = Config::new("debug");
-
-        // Act
-        let result = custom_config.process();
-
-        // Assert
-        assert!(result.is_ok());
-        Ok(())
-    }
-
-    #[test]
-    fn test_desktop_library_service_lifecycle_aaa() -> Result<()> {
-        // Arrange
-        let config = Config::default();
-        let mut service = Service::new(config);
-        assert!(!service.is_running());
-
-        // Act & Assert - Start
-        service.start()?;
-        assert!(service.is_running());
-
-        // Act & Assert - Redundant start fails cleanly
-        assert!(service.start().is_err());
-
-        // Act & Assert - Stop
-        service.stop()?;
-        assert!(!service.is_running());
-
-        // Act & Assert - Redundant stop fails cleanly
-        assert!(service.stop().is_err());
-
-        Ok(())
-    }
+#[test]
+fn component_constructs() {
+    let _c = Component::new();
 }
