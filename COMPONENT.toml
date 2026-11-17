@@ -1,6 +1,6 @@
 [component]
 name = "SigmaOS-desktop-library"
-description = "SigmaOS subsystem component for desktop-library"
+description = "Shared desktop library (settings, icons, xapp glue)"
 version = "0.1.0"
 tier = 4
 
